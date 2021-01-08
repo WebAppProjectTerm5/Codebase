@@ -1,0 +1,156 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
+    grid-template-areas: 
+    "title title"
+    "header-content header-content"
+    "chart-1 chart-1"
+    "chart-2 chart-2"
+    "chart-3 chart-3"
+    "content-2 content-2"
+    "chart-4 chart-4"
+    "chart-5 chart-5"
+    "chart-6 chart-6"
+    "footer footer";
+    grid-gap: 20px;
+    padding: 10px;
+}
+
+.title {
+    grid-area: title;
+    font-size: x-large;
+}
+
+.header-content {
+    grid-area: header-content;
+    margin-bottom: 30px;
+    /* justify-self: start; */
+}
+
+.chart-1 {
+    grid-area: chart-1;
+}
+
+.chart-2 {
+    grid-area: chart-2;
+}
+
+.content-2 {
+    grid-area: content-2;
+}
+
+.chart-3 {
+    grid-area: chart-3;
+}
+
+.chart-4 {
+    grid-area: chart-4;
+}
+
+.chart-5 {
+    grid-area: chart-5;
+}
+
+.chart-6 {
+    grid-area: chart-6;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+.chart-1{
+    height: 380px;
+}
+
+.chart-2{
+    height: 380px;
+}
+
+.chart-3{
+    height: 380px;
+}
+
+.chart-4{
+    height: 380px;
+}
+
+.chart-5{
+    height: 380px;
+}
+
+.chart-6{
+    height: 380px;
+}
+
+.header-content{
+    height: 420px;
+}
+
+.tableDiv{
+    height: 300px;
+    overflow-x: hidden;
+    margin-top: 25px;
+}
+
+@media screen and (min-width: 1030px)
+{
+    .grid{
+        display: grid;
+        grid-template-columns: 1fr 900px 900px 1fr;
+        grid-template-rows: auto auto auto auto auto auto;
+        grid-template-areas: 
+        ". title title ."
+        ". header-content chart-1 ."
+        ". chart-2 chart-3 ."
+        ". content-2 chart-4 ."
+        ". chart-5 chart-6 ."
+        ". footer footer .";
+        grid-gap: 25px;
+    }
+
+    .title{
+        height: auto;
+        font-size: 65px;
+    }
+    
+    .header-content{
+        height: 460px;
+    }
+
+    .chart-1{
+        height: 460px;
+    }
+
+    .chart-2{
+        height: 460px;
+    }
+
+    .chart-3{
+        height: 460px;
+    }
+
+    .chart-4{
+        height: 460px;
+    }
+
+    .chart-5{
+        height: 460px;
+    }
+
+    .chart-6{
+        height: 460px;
+    }
+
+    .tableDiv{
+        height: 370px;
+        overflow-x: hidden;
+        margin-top: 20px;
+    }
+}

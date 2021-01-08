@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style/styleGrid.css">
+        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="style/chosen.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script type="module" src="./js/table.js"></script>
+        <script type="module" src="./js/loadData.js"></script>
+        <script type="module" src="./js/drawChartState.js"></script>
+        <script type="module" src="./js/drawChartNation.js"></script>
+        <script src="js/chosen.jquery.js"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167121456-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-167121456-1');
+        </script>
+        <title>COVID-19 Stats India</title>
+    </head>
+    <body>
+        <div class="grid">
+            <div class="title"><img src="image/corona-virus.png" alt="COVID-19" width="3%"> COVID-19 <span style="color: rgb(34, 10, 100);">INDIA</span> <span style="color: rgb(139, 18, 44);">Statistics</span></div>
+            <div class="header-content">
+                <p>Coronavirus disease 2019 (COVID-19) is an infectious disease caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).  
+                The dashboard aims to help you stay updated with this pandemic situation in India.</p>
+                <!-- <div id="chartContainerIndiaConfirmed"></div> -->
+                <div class="tableDiv">
+                    <table id="stateTable"></table>
+                </div>
+            </div>
+            <div class="chart-1">
+                <canvas id="casesChart"></canvas>
+            </div>
+            <div class="chart-2">
+                <canvas id="casesCumulativeChart"></canvas>
+            </div>
+            <div class="chart-3">
+                <canvas id="testsChart"></canvas>
+            </div>
+            <div class="content-2">
+                <h2>Cases & Tests State wise:</h2>
+                </br>
+                <select data-placeholder="Choose a state..." class="chosen">
+                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat" selected="selected">Gujarat</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Ladakh">Ladakh</option>
+                    <option value="Lakshadweep">Lakshadweep</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Puducherry">Puducherry</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+                </select>  
+                </br>
+                <div class="tableDiv">
+                    <table id="districtTable"></table>
+                </div>
+            </div>
+            <div class="chart-4">
+                <canvas id="casesChartState"></canvas>
+            </div>
+            <div class="chart-5">
+                <canvas id="testChartState"></canvas>
+            </div>
+            <div class="chart-6">
+                <canvas id="testChartPositiveRateState"></canvas>
+            </div>
+            <div class="footer">*Data source: https://api.covid19india.org/ </br>
+            *Created by: <a href="https://www.linkedin.com/in/kunal--jain/">Kunal Jain</a> & <a href="https://www.linkedin.com/in/utkarsh-kumar-522b48118/">Utkarsh Kumar</a> </br>
+            *Project Guide: <a href="https://www.iima.ac.in/web/faculty/faculty-profiles/swanand-deodhar">Prof. Swanand Deodhar</a> </div>
+        </div>
+    </body>
+</html>

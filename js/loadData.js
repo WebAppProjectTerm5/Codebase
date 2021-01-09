@@ -9,13 +9,15 @@ import {generateTable} from './table.js';
 import {chart4} from './drawChartState.js';
 import {chart5} from './drawChartState.js';
 import {chart6} from './drawChartState.js';
-
+import {drawCards} from './card.js';
 
 const confirmedCasesDaily = [];
 const recoveredCasesDaily = [];
+const activeCasesDaily = [];
 const deceasedCasesDaily = [];
 const confirmedCasesCumulative = [];
 const recoveredCasesCumulative = [];
+const activeCasesCumulative = [];
 const deceasedCasesCumulative = [];
 const dateCases = [];
 const dateTest = [];
@@ -29,6 +31,11 @@ var state = "Gujarat";
 let stateCaseDataSet;
 let stateTestDataSet;
 let tableCaseDataSet;
+
+let totalActive = 0;
+let totalConfirmed = 0;
+let totalRecovered = 0;
+let totalDeceased = 0;
 
 
 $.get("https://api.covid19india.org/v2/state_district_wise.json", function(data) {
@@ -61,20 +68,27 @@ function setIndiaTableData(data){
         let state = data[i].state;
         let confirmedDataTemp = 0;
         let recoveredDataTemp = 0;
+        let activeDataTemp = 0;
         let deceasedDataTemp = 0;
             for(let j=0;j<data[i].districtData.length;j++){
                 confirmedDataTemp = confirmedDataTemp + data[i].districtData[j].confirmed;
                 recoveredDataTemp = recoveredDataTemp + data[i].districtData[j].recovered;
+                activeDataTemp = activeDataTemp + data[i].districtData[j].active;
                 deceasedDataTemp = deceasedDataTemp + data[i].districtData[j].deceased;
             }
             let tableObject = {"State": state, "Confirmed": confirmedDataTemp, "Recovered": recoveredDataTemp, "Deceased": deceasedDataTemp};
+            totalConfirmed = totalConfirmed + confirmedDataTemp;
+            totalRecovered = totalRecovered + recoveredDataTemp;
+            totalDeceased = totalDeceased + deceasedDataTemp;
+            totalActive = totalActive + activeDataTemp;
             tableData.push(tableObject);
     }
-    // console.log(tableData);
+    //console.log(totalActive);
     let stateTable = document.getElementById("stateTable");
     let tableDataHead = Object.keys(tableData[0]);
     generateTableHead(stateTable,tableDataHead);
     generateTable(stateTable, tableData);
+    drawCards(totalConfirmed, totalRecovered, totalActive, totalDeceased);
 }
 
 function setStateTableData(data,state){
@@ -142,21 +156,22 @@ function setStateTestData(data,state){
     const testPositivityRate = [];
     const testDate = [];
 
+    //console.log(data);
     for(let i=0;i<data.states_tested_data.length;i++){
         if(data.states_tested_data[i].state == state){
             if(data.states_tested_data[i].totaltested != ''){
                 totalTest.push(data.states_tested_data[i].totaltested);
                 totalNegativeTest.push(data.states_tested_data[i].negative);
                 totalPositiveTest.push(data.states_tested_data[i].positive);
-                let str = data.states_tested_data[i].testpositivityrate;
-                let newStr = str.substring(0, str.length-1);
-                testPositivityRate.push(newStr);
+                //let str = data.states_tested_data[i].testpositivityrate;
+                //let newStr = str.substring(0, str.length-1);
+                //testPositivityRate.push(str);
                 testDate.push(data.states_tested_data[i].updatedon);
             }
         }
     }
     drawChartTestingState(testDate,totalTest,totalPositiveTest,totalNegativeTest);
-    drawChartTestingRateState(testDate,testPositivityRate);
+    //drawChartTestingRateState(testDate,testPositivityRate);
     // console.log("Total Test: ",totalTest);
     // console.log("Total Negative Test: ",totalNegativeTest);
     // console.log("Total Positive Test: ",totalPositiveTest);
@@ -326,7 +341,7 @@ $(document).ready(function(){
         var selectedState = $(this).children("option:selected").val();
         chart4.destroy();
         chart5.destroy();
-        chart6.destroy();
+        //chart6.destroy();
         setStateCasesData(stateCaseDataSet,selectedState);
         setStateTestData(stateTestDataSet,selectedState);
         setStateTableData(tableCaseDataSet,selectedState);

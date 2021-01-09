@@ -6,9 +6,11 @@
 .grid{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto auto;
     grid-template-areas: 
     "title title"
+    "card-1 card-2"
+    "card-3 card-4"
     "header-content header-content"
     "chart-1 chart-1"
     "chart-2 chart-2"
@@ -25,6 +27,22 @@
 .title {
     grid-area: title;
     font-size: x-large;
+}
+
+.card-1 {
+    grid-area: card-1;
+}
+
+.card-2 {
+    grid-area: card-2;
+}
+
+.card-3 {
+    grid-area: card-3;
+}
+
+.card-4 {
+    grid-area: card-4;
 }
 
 .header-content {
@@ -104,9 +122,11 @@
     .grid{
         display: grid;
         grid-template-columns: 1fr 900px 900px 1fr;
-        grid-template-rows: auto auto auto auto auto auto;
+        grid-template-rows: auto auto auto auto auto auto auto;
         grid-template-areas: 
         ". title title ."
+        ". card-1 card-2 ."
+        ". card-3 card-4 ."
         ". header-content chart-1 ."
         ". chart-2 chart-3 ."
         ". content-2 chart-4 ."
